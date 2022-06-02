@@ -1,16 +1,16 @@
-function trim(){
+const trim=function(){
     let text = "       Hello World!        ";
     let result = text.trim();
-    return result
+    console.log(result)
     
 }
-function  changetoLowerCase(){
+const changetoLowerCase=function(){
     let c='functionup'
-    return c.toUpperCase();
+    console.log(c.toUpperCase()) 
 }
-function changeToUpperCase(){
+const changeToUpperCase= function(){
     const sentence = 'The quick brown fox jumps over the lazy dog.';
-     return sentence.toLowerCase()
+    console.log(sentence.toLowerCase())
 }
 
 module.exports.trim=trim;
