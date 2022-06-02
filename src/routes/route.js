@@ -1,12 +1,21 @@
 const express = require('express');
-const externalModule = require('./logger')
-
+const routs=require('../util/helper.js')
+const format=require('../validator/formatter')
 const router = express.Router();
+const logger=require('../logger/logger')
 
 router.get('/test-me', function (req, res) {
-    console.log('The constant in logger route has a value '+externalModule.endpoint)
-    console.log('The current batch is '+externalModule.batch)
-    externalModule.log()
+  logger.welcome();
+//   console.log(routs.printDate())
+  routs.printDate()
+  routs.printMonth()
+  routs.getBatchInfo()
+//   console.log(routs.printMonth())
+//   console.log(routs.getBatchInfo())
+  console.log(format.trim())
+  console.log(format.changetoLowerCase())
+  console.log(format.changeToUpperCase())
+
     res.send('My first ever api!')
 });
 
