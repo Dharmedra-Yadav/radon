@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const bookSchema = new mongoose.Schema( {
     bookName: String,
     authorName: String,
@@ -11,14 +10,8 @@ const bookSchema = new mongoose.Schema( {
     
    
     year: Number,
-    // isIndian: Boolean,
-    // parentsInfo: {
-    //     motherName: String,
-    //     fatherName: String,
-    //     siblingName: String
-    // },
-    // cars: [ String  ]
-}, { timestamps: true });
+
+},{ timestamps: true });
 
 module.exports = mongoose.model('Book', bookSchema) //users
 
