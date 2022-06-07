@@ -5,7 +5,7 @@ const bookModel=require("../models/bookModel")
 /*--------------------LOGIC CREATING------------------------------------*/
 const createBook= async function (req, res) {
     let data= req.body
-    let savedData= await BookModel.create(data)
+    let savedData= await bookModel.create(data)
     res.send({msg: savedData})
 }
 const booksList= async function(req, res) {
