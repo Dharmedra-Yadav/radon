@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 // const UserModel= require("../models/userModel.js")
 const UserController= require("../controllers/userController")
-const BookController= require("../models")
+const BookController= require("../controllers/bookController")
 
 /*-----------------------Create API------------------------------*/
 router.post("/createAuthor", BookController.createAuthor)
