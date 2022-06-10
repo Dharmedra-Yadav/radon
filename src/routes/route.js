@@ -6,7 +6,7 @@ const authorController= require("../controllers/authorController")
 const bookController= require("../controllers/bookController")
 const publishedController=require("../controllers/publisherController")
 
-/******************************API  Create This lines************************************/
+/******************************API Create This lines************************************/
 router.post("/createAuthor", authorController.createAuthor )
 router.post("/createPublisher",publishedController.createPublisher)
 router.post("/createBook", bookController.createBook)
