@@ -1,9 +1,30 @@
-const UserModel= require("../models/userModel")
+const userModel=require('../models/userDocumentModels')
+const productModel=require('../models/productDocumentModuls')
+
+
+const createuser= async function ( req, res,next) {
+    let data=req.body
+    let saveData=await userModel.create(data)
+    res.send({data:saveData})
+
+}
+const createpropduct= async function(req,res){
+    let data=req.body
+    let saveData=await productModel.create(data)
+    res.send({data:saveData})
+
+}
+module.exports.createuser=createuser
+module.exports.createpropduct=createpropduct
 
 
 
 
-const basicCode= async function(req, res, next) {
+
+
+
+
+/*const basicCode= async function(req, res, next) {
     let tokenDataInHeaders= req.headers.token
     console.log(tokenDataInHeaders)
 
@@ -44,4 +65,4 @@ const getUsersData= async function (req, res) {
 
 module.exports.createUser= createUser
 module.exports.getUsersData= getUsersData
-module.exports.basicCode= basicCode
+module.exports.basicCode= basicCode*/
