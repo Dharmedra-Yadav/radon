@@ -6,5 +6,5 @@ const userController=require('../controllers/userController')
 
 router.post("/createUser",userController.createuser)
 router.post("/createProduct",userController.createpropduct)
-//router.post("/createOrder",commonMW1.checkHeader,commonMW1.checkHeader)
+router.post("/createOrder",commonMW1.checkHeader,commonMW1.checkHeader)
 module.exports = router;
