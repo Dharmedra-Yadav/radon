@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/userModel");
 
+
 const createUser = async function (abcd, xyz) {
   //You can name the req, res objects anything.
   //but the first parameter is always the request 
@@ -59,7 +60,7 @@ const getUserData = async function (req, res) {
     return res.send({ status: false, msg: "token is invalid" });
 
   let userId = req.params.userId;
-  let userDetails = await userModel.findById(userId);
+  let userDetails = await userModel.findById({_id:userId,isDeleted:false});
   if (!userDetails)
     return res.send({ status: false, msg: "No such user exists" });
 
@@ -84,7 +85,30 @@ const updateUser = async function (req, res) {
   res.send({ status: updatedUser, data: updatedUser });
 };
 
+
+
+const userDelete = async function (req, res) {
+  // Do the same steps here:
+  // Check if the token is present
+  // Check if the token present is a valid token
+  // Return a different error message in both these cases
+  
+    let userId = req.params.userId;
+    let user = await userModel.findById(userId);
+    //Return an error if no user with the given id exists in the db
+    if (!user) {
+      return res.send("No such user exists");
+    }
+  
+    let userDelete1 = req.body;
+    let updatedUser = await userModel.findOneAndUpdate({ _id: userId},{isDeleted:true});
+    res.send({ status: updatedUser, data: updatedUser });
+  };
+  
+
+/*****************This Method are public*************************/
 module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
 module.exports.loginUser = loginUser;
+module.exports.userDelete=userDelete
