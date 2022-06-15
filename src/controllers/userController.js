@@ -99,7 +99,7 @@ const postMessage = async function (req, res) {
     let userToBeModified = req.params.userId
     //userId for the logged-in user
     let userLoggedIn = decodedToken.userId
-
+    
     //userId comparision to check if the logged-in user is requesting for their own data
     if(userToBeModified != userLoggedIn) return res.send({status: false, msg: 'User logged is not allowed to modify the requested users data'})
 
@@ -115,8 +115,32 @@ const postMessage = async function (req, res) {
     return res.send({status: true, data: updatedUser})
 }
 
+
+
+
+const deleteUser = async function (req, res) {
+  // Do the same steps here:
+  // Check if the token is present
+  // Check if the token present is a valid token
+  // Return a different error message in both these cases
+  
+    let userId = req.params.userId;
+    let user = await userModel.findById(userId);
+    let token=req.headers["x-auth-token"];
+    //Return an error if no user with the given id exists in the db
+    if (!user) {
+      return res.send("No such user exists");
+    }else if(!token) return res.send({status:false,msg:'Token dikha nhi hai to bhag'})
+  
+    //let userData = req.body;
+    let updatedUser = await userModel.findOneAndUpdate({ _id: userId },{isDeleted:"true"},{new:true});
+    res.send({ status: true, data: updatedUser});
+  };
+  
+
 module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
 module.exports.loginUser = loginUser;
 module.exports.postMessage = postMessage
+module.exports.deleteUser=deleteUser;
