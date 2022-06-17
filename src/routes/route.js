@@ -12,7 +12,7 @@ router.get("/test-me", function (req, res) {
 router.post("/users",userController.createUser)
 
 /**************************Login API**********************************************/
-router.post("/login", userController.loginUser)
+//router.post("/login", userController.loginUser)
 
 //The userId is sent by front end
 /**************************UserId-Login API****************************************/
