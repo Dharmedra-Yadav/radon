@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
+/************************CREATE BLoGS SCHEMA*********************************/
 const blogSchema = new mongoose.Schema(
   {
     title: {
@@ -32,6 +33,7 @@ const blogSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    deletedAt:Date,
     publishedAt: {
       type: Date,
     },
@@ -42,4 +44,5 @@ const blogSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+/*********************************CREATE CONNECATION BLOG***************************************/
 module.exports = mongoose.model("Blog", blogSchema);

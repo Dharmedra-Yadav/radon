@@ -1,5 +1,6 @@
 const authorModel = require("../models/authorModels");
 
+/***************************VALIDATION****************************************/
 const isValid = function (x) {
   if (typeof x === "undefined" || x === null) return false;
   if (typeof x === "string" && x.trim().length === 0) return false;
@@ -60,4 +61,6 @@ const creatAuthor = async function (req, res) {
     res.status(500).send({ status: false, msg: error.message });
   }
 };
+
+/******************************PUBLIC**********************************/
 module.exports.creatAuthor = creatAuthor;

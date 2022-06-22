@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+/************************CREATE AUTHORS SCHEMA*********************************/
 const authorSchema = new mongoose.Schema(
   {
     title: {
@@ -28,4 +29,5 @@ const authorSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+/*********************************CREATE CONNECATION IN AUTHOR***************************************/
 module.exports = mongoose.model("Author", authorSchema);
